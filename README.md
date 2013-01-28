@@ -5,10 +5,10 @@ Java wrapper for Neustar's UltraDNS SOAP API.  Still a work in progress.
 
 biz.neustar.ultra.client.UltraAPIClientImpl is the entry point.  
 
-To initialize an instance, supply the username, password, and optionally the URL to the WSDL 
-(mostly useful for internal UltraDNS testing).
+To initialize an instance, supply the username, password, and optionally the URL to the WSDL, which is 
+useful for internal UltraDNS testing and for customer testing against our Customer Test Environment (CTE).
 
-All methods throw a RuntimeException biz.neustar.ultra.client.UltraAPIException.
+All methods throw a RuntimeException, biz.neustar.ultra.client.UltraAPIException.
 
 Currently there are very few methods exposed:
 
