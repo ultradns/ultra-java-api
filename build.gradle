@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "biz.neustar.ultra.client.UltraAPIClient"
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: "org.apache.ws.security", name: "wss4j", version: "1.6.9"
+    compile group: "org.apache.cxf", name: "cxf-bundle", version: "2.7.2"
+}
+
+version = 0.1
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Ultra API Client', 'Implementation-Version': version, 'Main-Class': mainClassName
+    }
+}
