@@ -1,3 +1,8 @@
+task createWrapper(type: Wrapper) {
+  description = "Create a gradle wrapper for you project"
+  gradleVersion = '1.3'
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 
