@@ -23,6 +23,10 @@ public class SampleMain {
      */
     public static void main(String[] args) {
 
+        if (args.length != 4) {
+            System.err.println("Required params: wsdlUrl userName password accountId");
+            System.exit(1);
+        }
         String wsdlUrl = args[0];
         String username = args[1];
         String password = args[2];

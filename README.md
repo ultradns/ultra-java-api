@@ -5,8 +5,10 @@ Java wrapper for Neustar's UltraDNS SOAP API.  Still a work in progress.
 
 biz.neustar.ultra.client.UltraAPIClientImpl is the entry point.  
 
-To initialize an instance, supply the username, password, and optionally the URL to the WSDL, which is 
-useful for internal UltraDNS testing and for customer testing against our Customer Test Environment (CTE).
+To initialize an instance, supply the username and password.
+
+You can also supply the URL to the WSDL, which is useful for internal UltraDNS testing and for customer testing against
+our Customer Test Environment (CTE).
 
 All methods throw a RuntimeException, biz.neustar.ultra.client.UltraAPIException.
 
@@ -28,7 +30,20 @@ Currently there are very few methods exposed:
 
     String getNeustarNetworkStatus();
 
+    ZoneList getSecondaryZonesOfAccount(String accountId);
+
+    ZoneList getPrimaryZonesOfAccount(String accountId);
+
+    ZoneList getAliasZonesOfAccount(String accountId);
+
+    ZoneList getZonesOfAccount(String accountId);
+
 More are forthcoming.
+
+Running SampleMain from Gradle
+===================
+
+./gradlew -q run -Pargs="wsdlUrl userName password accountId"
 
 License
 =======

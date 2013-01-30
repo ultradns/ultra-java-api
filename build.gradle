@@ -6,7 +6,7 @@ task createWrapper(type: Wrapper) {
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "biz.neustar.ultra.client.UltraAPIClient"
+mainClassName = "biz.neustar.ultra.client.SampleMain"
 repositories {
     mavenCentral()
 }
@@ -16,9 +16,15 @@ dependencies {
     compile group: "org.apache.cxf", name: "cxf-bundle", version: "2.7.2"
 }
 
-version = 0.1
+version = 0.2
 jar {
     manifest {
         attributes 'Implementation-Title': 'Ultra API Client', 'Implementation-Version': version, 'Main-Class': mainClassName
+    }
+}
+
+run {
+    if (project.hasProperty('args')) {
+        args project.args.split('\\s+')
     }
 }
