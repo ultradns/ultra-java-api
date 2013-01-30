@@ -19,8 +19,13 @@ import java.io.IOException;
  * of their respective owners.
  */
 public class ClientPasswordCallback implements CallbackHandler {
-    public static String _username;
-    public static String _password;
+    private final String _username;
+    private final String _password;
+
+    public ClientPasswordCallback(String username, String password) {
+        _username = username;
+        _password = password;
+    }
 
     public void handle(Callback[] callbacks) throws IOException,
             UnsupportedCallbackException {

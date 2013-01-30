@@ -13,6 +13,7 @@ package biz.neustar.ultra.client;
  */
 
 import com.neustar.ultraservice.schema.v01.AccountDetailsList;
+import com.neustar.ultraservice.schema.v01.ZoneList;
 
 public interface UltraAPIClient {
     String createARecord(String zoneName, String domainName, String ipAddress, int ttl);
@@ -30,4 +31,12 @@ public interface UltraAPIClient {
     AccountDetailsList getAccountDetailsForUser();
 
     String getNeustarNetworkStatus();
+
+    ZoneList getSecondaryZonesOfAccount(String accountId);
+
+    ZoneList getPrimaryZonesOfAccount(String accountId);
+
+    ZoneList getAliasZonesOfAccount(String accountId);
+
+    ZoneList getZonesOfAccount(String accountId);
 }

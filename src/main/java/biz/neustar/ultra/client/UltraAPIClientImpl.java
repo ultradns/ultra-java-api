@@ -3,17 +3,18 @@ package biz.neustar.ultra.client;
 import com.neustar.ultra.api.webservice.v01.UltraDNS1;
 import com.neustar.ultra.api.webservice.v01.UltraWSException_Exception;
 import com.neustar.ultra.api.webservice.v01.UltraWebServiceV01Service;
-import com.neustar.ultraservice.schema.v01.AccountDetailsList;
-import com.neustar.ultraservice.schema.v01.InfoValues;
-import com.neustar.ultraservice.schema.v01.ResourceRecordToCreate;
+import com.neustar.ultraservice.schema.v01.*;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
+import org.apache.ws.security.handler.WSHandlerConstants;
 
 import javax.xml.ws.Service;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * User: jbodner
@@ -35,16 +36,16 @@ public class UltraAPIClientImpl implements UltraAPIClient {
 
     public UltraAPIClientImpl(String username, String password, String url) {
         try {
-            ClientPasswordCallback._username = username;
-            ClientPasswordCallback._password = password;
             Service service = UltraWebServiceV01Service.create(new URL(url), UltraWebServiceV01Service.SERVICE);
             _ultraDNS1 = service.getPort(UltraDNS1.class);
             Client cxfClient = ClientProxy.getClient(_ultraDNS1);
             WSS4JOutInterceptor wss4JOutInterceptor = new WSS4JOutInterceptor();
-            wss4JOutInterceptor.setProperty("action", "UsernameToken");
-            wss4JOutInterceptor.setProperty("user", "dummy");
-            wss4JOutInterceptor.setProperty("passwordType", "PasswordText");
-            wss4JOutInterceptor.setProperty("passwordCallbackClass", "biz.neustar.ultra.client.ClientPasswordCallback");
+            Map<String, Object> properties = new HashMap<String, Object>();
+            properties.put(WSHandlerConstants.ACTION, "UsernameToken");
+            properties.put(WSHandlerConstants.USER, "dummy");
+            properties.put(WSHandlerConstants.PASSWORD_TYPE, "PasswordText");
+            properties.put(WSHandlerConstants.PW_CALLBACK_REF, new ClientPasswordCallback(username, password));
+            wss4JOutInterceptor.setProperties(properties);
 
             cxfClient.getOutInterceptors().add(new org.apache.cxf.interceptor.LoggingOutInterceptor());
             cxfClient.getOutInterceptors().add(wss4JOutInterceptor);
@@ -129,19 +130,59 @@ public class UltraAPIClientImpl implements UltraAPIClient {
         try {
             return _ultraDNS1.getNeustarNetworkStatus();
         } catch (UltraWSException_Exception e) {
-            e.printStackTrace();
             throw new UltraAPIException(e.getFaultInfo());
         }
     }
 
-    public static void main(String[] args) {
-        String wsdl_url = "http://localhost:8008/UltraDNS_WS/v01?wsdl";
-        System.out.println("url = " + wsdl_url);
+    @Override
+    public ZoneList getSecondaryZonesOfAccount(String accountId) {
+        return getZonesOfAccount(accountId, ZoneType.SECONDARY);
+    }
+
+    @Override
+    public ZoneList getPrimaryZonesOfAccount(String accountId) {
+        return getZonesOfAccount(accountId, ZoneType.PRIMARY);
+    }
+
+    @Override
+    public ZoneList getAliasZonesOfAccount(String accountId) {
+        return getZonesOfAccount(accountId, ZoneType.ALIAS);
+    }
+
+    @Override
+    public ZoneList getZonesOfAccount(String accountId) {
+        return getZonesOfAccount(accountId, ZoneType.ALL);
+    }
+
+    private ZoneList getZonesOfAccount(String accountId, ZoneType zoneType) {
         try {
-            UltraAPIClient ultraAPIClient = new UltraAPIClientImpl("USERNAME", "PASSWORD", wsdl_url);
+            return _ultraDNS1.getZonesOfAccount(accountId, zoneType);
+        } catch (UltraWSException_Exception e) {
+            throw new UltraAPIException(e.getFaultInfo());
+        }
+    }
+
+
+    /*
+    arg pos     value
+    0           wsdl url
+    1           username
+    2           password
+    3           account id
+     */
+    public static void main(String[] args) {
+
+        String wsdlUrl = args[0];
+        String username = args[1];
+        String password = args[2];
+        String accountId = args[3];
+
+        System.out.println("url = " + wsdlUrl);
+        try {
+            UltraAPIClient ultraAPIClient = new UltraAPIClientImpl(username, password, wsdlUrl);
             System.out.println(ultraAPIClient.getNeustarNetworkStatus());
             AccountDetailsList accountDetailsForUser = ultraAPIClient.getAccountDetailsForUser();
-            System.out.println(accountDetailsForUser);
+            System.out.println(accountDetailsForUser.getAccountDetailsData().get(0).getAccountID());
             try {
                 System.out.println(ultraAPIClient.deleteZone("testZone.com."));
             } catch (UltraAPIException e) {
@@ -150,11 +191,12 @@ public class UltraAPIClientImpl implements UltraAPIClient {
                     System.exit(1);
                 }
             }
-            System.out.println(ultraAPIClient.createPrimaryZone("ACCOUNT_ID", "testZone.com."));
+            System.out.println(ultraAPIClient.createPrimaryZone(accountId, "testZone.com."));
+            System.out.println(ultraAPIClient.getSecondaryZonesOfAccount(accountId));
             System.out.println(ultraAPIClient.createARecord("testZone.com.","foo.testZone.com.", "1.2.3.4",86400));
             System.out.println(ultraAPIClient.deleteZone("testZone.com."));
         } catch (UltraAPIException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 }
