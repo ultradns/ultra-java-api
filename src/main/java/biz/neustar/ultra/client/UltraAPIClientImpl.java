@@ -161,42 +161,4 @@ public class UltraAPIClientImpl implements UltraAPIClient {
             throw new UltraAPIException(e.getFaultInfo());
         }
     }
-
-
-    /*
-    arg pos     value
-    0           wsdl url
-    1           username
-    2           password
-    3           account id
-     */
-    public static void main(String[] args) {
-
-        String wsdlUrl = args[0];
-        String username = args[1];
-        String password = args[2];
-        String accountId = args[3];
-
-        System.out.println("url = " + wsdlUrl);
-        try {
-            UltraAPIClient ultraAPIClient = new UltraAPIClientImpl(username, password, wsdlUrl);
-            System.out.println(ultraAPIClient.getNeustarNetworkStatus());
-            AccountDetailsList accountDetailsForUser = ultraAPIClient.getAccountDetailsForUser();
-            System.out.println(accountDetailsForUser.getAccountDetailsData().get(0).getAccountID());
-            try {
-                System.out.println(ultraAPIClient.deleteZone("testZone.com."));
-            } catch (UltraAPIException e) {
-                e.printStackTrace();
-                if (e.getCode() != 1801) {
-                    System.exit(1);
-                }
-            }
-            System.out.println(ultraAPIClient.createPrimaryZone(accountId, "testZone.com."));
-            System.out.println(ultraAPIClient.getSecondaryZonesOfAccount(accountId));
-            System.out.println(ultraAPIClient.createARecord("testZone.com.","foo.testZone.com.", "1.2.3.4",86400));
-            System.out.println(ultraAPIClient.deleteZone("testZone.com."));
-        } catch (UltraAPIException e) {
-            e.printStackTrace();
-        }
-    }
 }
