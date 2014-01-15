@@ -20,10 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="poolRecordType" type="{http://schema.ultraservice.neustar.com/v01/}RecordType" minOccurs="0"/>
  *         &lt;element name="poolRecordValue" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="recordState" type="{http://schema.ultraservice.neustar.com/v01/}RecordState" minOccurs="0"/>
+ *         &lt;element name="forcedState" type="{http://schema.ultraservice.neustar.com/v01/}ForcedState" minOccurs="0"/>
  *         &lt;element name="probesEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="poolRecordStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,10 +37,9 @@ import javax.xml.bind.annotation.XmlType;
     "description",
     "poolRecordType",
     "poolRecordValue",
-    "recordState",
+    "forcedState",
     "probesEnabled",
-    "weight",
-    "poolRecordStatus"
+    "weight"
 })
 public class PoolRecordUpdate {
 
@@ -49,10 +47,9 @@ public class PoolRecordUpdate {
     protected String description;
     protected RecordType poolRecordType;
     protected String poolRecordValue;
-    protected RecordState recordState;
+    protected ForcedState forcedState;
     protected Boolean probesEnabled;
     protected Integer weight;
-    protected String poolRecordStatus;
 
     /**
      * Gets the value of the allFail property.
@@ -151,27 +148,27 @@ public class PoolRecordUpdate {
     }
 
     /**
-     * Gets the value of the recordState property.
+     * Gets the value of the forcedState property.
      * 
      * @return
      *     possible object is
-     *     {@link RecordState }
+     *     {@link ForcedState }
      *     
      */
-    public RecordState getRecordState() {
-        return recordState;
+    public ForcedState getForcedState() {
+        return forcedState;
     }
 
     /**
-     * Sets the value of the recordState property.
+     * Sets the value of the forcedState property.
      * 
      * @param value
      *     allowed object is
-     *     {@link RecordState }
+     *     {@link ForcedState }
      *     
      */
-    public void setRecordState(RecordState value) {
-        this.recordState = value;
+    public void setForcedState(ForcedState value) {
+        this.forcedState = value;
     }
 
     /**
@@ -220,30 +217,6 @@ public class PoolRecordUpdate {
      */
     public void setWeight(Integer value) {
         this.weight = value;
-    }
-
-    /**
-     * Gets the value of the poolRecordStatus property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPoolRecordStatus() {
-        return poolRecordStatus;
-    }
-
-    /**
-     * Sets the value of the poolRecordStatus property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPoolRecordStatus(String value) {
-        this.poolRecordStatus = value;
     }
 
 }

@@ -16,7 +16,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="runTime" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="runTime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="runTimeAverage" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="response" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -29,27 +30,61 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DnsCriteria", propOrder = {
     "runTime",
+    "runTimeAverage",
     "response"
 })
 public class DnsCriteria {
 
-    protected int runTime;
+    protected Integer runTime;
+    protected Integer runTimeAverage;
     protected String response;
 
     /**
      * Gets the value of the runTime property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
      */
-    public int getRunTime() {
+    public Integer getRunTime() {
         return runTime;
     }
 
     /**
      * Sets the value of the runTime property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
      */
-    public void setRunTime(int value) {
+    public void setRunTime(Integer value) {
         this.runTime = value;
+    }
+
+    /**
+     * Gets the value of the runTimeAverage property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getRunTimeAverage() {
+        return runTimeAverage;
+    }
+
+    /**
+     * Sets the value of the runTimeAverage property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setRunTimeAverage(Integer value) {
+        this.runTimeAverage = value;
     }
 
     /**

@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="poolName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="poolRecordType" type="{http://schema.ultraservice.neustar.com/v01/}RecordType"/>
  *         &lt;element name="poolRecordValue" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -30,12 +31,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PoolRecordId", propOrder = {
     "poolName",
+    "poolRecordType",
     "poolRecordValue"
 })
 public class PoolRecordId {
 
     @XmlElement(required = true)
     protected String poolName;
+    @XmlElement(required = true)
+    protected RecordType poolRecordType;
     @XmlElement(required = true)
     protected String poolRecordValue;
 
@@ -61,6 +65,30 @@ public class PoolRecordId {
      */
     public void setPoolName(String value) {
         this.poolName = value;
+    }
+
+    /**
+     * Gets the value of the poolRecordType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RecordType }
+     *     
+     */
+    public RecordType getPoolRecordType() {
+        return poolRecordType;
+    }
+
+    /**
+     * Sets the value of the poolRecordType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RecordType }
+     *     
+     */
+    public void setPoolRecordType(RecordType value) {
+        this.poolRecordType = value;
     }
 
     /**

@@ -45,8 +45,8 @@ public class NameServers {
      * <p>
      * You are getting this "catch-all" property because of the following reason: 
      * The field name "NameServerRecordSet" is used by two different parts of a schema. See: 
-     * line 1527 of https://ultra-api.ultradns.com/UltraDNS_WS/v01?wsdl
-     * line 1526 of https://ultra-api.ultradns.com/UltraDNS_WS/v01?wsdl
+     * line 2394 of http://ultra-api.ultradns.com/UltraDNS_WS/v01?wsdl
+     * line 2393 of http://ultra-api.ultradns.com/UltraDNS_WS/v01?wsdl
      * <p>
      * To get rid of this property, apply a property customization to one 
      * of both of the following declarations to change their names: 

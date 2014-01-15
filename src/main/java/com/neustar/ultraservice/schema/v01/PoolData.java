@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="LBPoolId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="PoolId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="PoolType" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="PoolRecordType" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="Bleid" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="PoolStatus" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="PoolDName" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -52,6 +53,8 @@ public class PoolData {
     protected String poolId;
     @XmlAttribute(name = "PoolType", required = true)
     protected String poolType;
+    @XmlAttribute(name = "PoolRecordType", required = true)
+    protected String poolRecordType;
     @XmlAttribute(name = "Bleid", required = true)
     protected String bleid;
     @XmlAttribute(name = "PoolStatus", required = true)
@@ -169,6 +172,30 @@ public class PoolData {
      */
     public void setPoolType(String value) {
         this.poolType = value;
+    }
+
+    /**
+     * Gets the value of the poolRecordType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPoolRecordType() {
+        return poolRecordType;
+    }
+
+    /**
+     * Sets the value of the poolRecordType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPoolRecordType(String value) {
+        this.poolRecordType = value;
     }
 
     /**

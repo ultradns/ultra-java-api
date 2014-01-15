@@ -42,6 +42,118 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RestrictIP }
+     * 
+     */
+    public RestrictIP createRestrictIP() {
+        return new RestrictIP();
+    }
+
+    /**
+     * Create an instance of {@link DeleteZoneStatus }
+     * 
+     */
+    public DeleteZoneStatus createDeleteZoneStatus() {
+        return new DeleteZoneStatus();
+    }
+
+    /**
+     * Create an instance of {@link SecondaryZoneInfo }
+     * 
+     */
+    public SecondaryZoneInfo createSecondaryZoneInfo() {
+        return new SecondaryZoneInfo();
+    }
+
+    /**
+     * Create an instance of {@link NameServerIpList }
+     * 
+     */
+    public NameServerIpList createNameServerIpList() {
+        return new NameServerIpList();
+    }
+
+    /**
+     * Create an instance of {@link NameServer }
+     * 
+     */
+    public NameServer createNameServer() {
+        return new NameServer();
+    }
+
+    /**
+     * Create an instance of {@link PrimaryZoneInfo }
+     * 
+     */
+    public PrimaryZoneInfo createPrimaryZoneInfo() {
+        return new PrimaryZoneInfo();
+    }
+
+    /**
+     * Create an instance of {@link TransferInfo }
+     * 
+     */
+    public TransferInfo createTransferInfo() {
+        return new TransferInfo();
+    }
+
+    /**
+     * Create an instance of {@link TransferStatus }
+     * 
+     */
+    public TransferStatus createTransferStatus() {
+        return new TransferStatus();
+    }
+
+    /**
+     * Create an instance of {@link ZoneProperties }
+     * 
+     */
+    public ZoneProperties createZoneProperties() {
+        return new ZoneProperties();
+    }
+
+    /**
+     * Create an instance of {@link AuditSummary }
+     * 
+     */
+    public AuditSummary createAuditSummary() {
+        return new AuditSummary();
+    }
+
+    /**
+     * Create an instance of {@link InternalZone }
+     * 
+     */
+    public InternalZone createInternalZone() {
+        return new InternalZone();
+    }
+
+    /**
+     * Create an instance of {@link PrimaryNameServers }
+     * 
+     */
+    public PrimaryNameServers createPrimaryNameServers() {
+        return new PrimaryNameServers();
+    }
+
+    /**
+     * Create an instance of {@link AliasZoneInfo }
+     * 
+     */
+    public AliasZoneInfo createAliasZoneInfo() {
+        return new AliasZoneInfo();
+    }
+
+    /**
+     * Create an instance of {@link Zone }
+     * 
+     */
+    public Zone createZone() {
+        return new Zone();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UltraWSException }{@code >}}
      * 
      */

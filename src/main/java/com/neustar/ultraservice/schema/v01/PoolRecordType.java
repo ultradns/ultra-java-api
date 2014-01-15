@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="A"/>
  *     &lt;enumeration value="AAAA"/>
+ *     &lt;enumeration value="SUBPOOL"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -25,7 +26,8 @@ import javax.xml.bind.annotation.XmlType;
 public enum PoolRecordType {
 
     A,
-    AAAA;
+    AAAA,
+    SUBPOOL;
 
     public String value() {
         return name();

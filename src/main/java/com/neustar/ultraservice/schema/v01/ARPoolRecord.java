@@ -21,11 +21,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="poolRecordType" type="{http://schema.ultraservice.neustar.com/v01/}RecordType"/>
  *         &lt;element name="poolRecordValue" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="poolRecordState" type="{http://schema.ultraservice.neustar.com/v01/}RecordState"/>
+ *         &lt;element name="forcedState" type="{http://schema.ultraservice.neustar.com/v01/}ForcedState"/>
  *         &lt;element name="probesEnabled" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="allFail" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="poolRecordStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,11 +39,10 @@ import javax.xml.bind.annotation.XmlType;
     "description",
     "poolRecordType",
     "poolRecordValue",
-    "poolRecordState",
+    "forcedState",
     "probesEnabled",
     "weight",
-    "allFail",
-    "poolRecordStatus"
+    "allFail"
 })
 public class ARPoolRecord {
 
@@ -56,11 +54,10 @@ public class ARPoolRecord {
     @XmlElement(required = true)
     protected String poolRecordValue;
     @XmlElement(required = true)
-    protected RecordState poolRecordState;
+    protected ForcedState forcedState;
     protected boolean probesEnabled;
     protected Integer weight;
     protected Boolean allFail;
-    protected String poolRecordStatus;
 
     /**
      * Gets the value of the poolName property.
@@ -159,27 +156,27 @@ public class ARPoolRecord {
     }
 
     /**
-     * Gets the value of the poolRecordState property.
+     * Gets the value of the forcedState property.
      * 
      * @return
      *     possible object is
-     *     {@link RecordState }
+     *     {@link ForcedState }
      *     
      */
-    public RecordState getPoolRecordState() {
-        return poolRecordState;
+    public ForcedState getForcedState() {
+        return forcedState;
     }
 
     /**
-     * Sets the value of the poolRecordState property.
+     * Sets the value of the forcedState property.
      * 
      * @param value
      *     allowed object is
-     *     {@link RecordState }
+     *     {@link ForcedState }
      *     
      */
-    public void setPoolRecordState(RecordState value) {
-        this.poolRecordState = value;
+    public void setForcedState(ForcedState value) {
+        this.forcedState = value;
     }
 
     /**
@@ -244,30 +241,6 @@ public class ARPoolRecord {
      */
     public void setAllFail(Boolean value) {
         this.allFail = value;
-    }
-
-    /**
-     * Gets the value of the poolRecordStatus property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPoolRecordStatus() {
-        return poolRecordStatus;
-    }
-
-    /**
-     * Sets the value of the poolRecordStatus property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPoolRecordStatus(String value) {
-        this.poolRecordStatus = value;
     }
 
 }

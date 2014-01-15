@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="DirectionalRecordConfiguration" type="{http://schema.ultraservice.neustar.com/v01/}DirectionalDNSRecord"/>
  *         &lt;element name="GeolocationGroupData" type="{http://schema.ultraservice.neustar.com/v01/}GeolocationGroupData"/>
  *         &lt;element name="SourceIPGroupData" type="{http://schema.ultraservice.neustar.com/v01/}SourceIPGroupData"/>
+ *         &lt;element name="forceOverlapTransfer" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="directionalPoolId" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="createAllNonConfiguredGrp" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AddDirectionalRecordData", propOrder = {
     "directionalRecordConfiguration",
     "geolocationGroupData",
-    "sourceIPGroupData"
+    "sourceIPGroupData",
+    "forceOverlapTransfer"
 })
 public class AddDirectionalRecordData {
 
@@ -45,6 +47,7 @@ public class AddDirectionalRecordData {
     protected GeolocationGroupData geolocationGroupData;
     @XmlElement(name = "SourceIPGroupData", required = true, nillable = true)
     protected SourceIPGroupData sourceIPGroupData;
+    protected Boolean forceOverlapTransfer;
     @XmlAttribute(name = "directionalPoolId", required = true)
     protected String directionalPoolId;
     @XmlAttribute(name = "createAllNonConfiguredGrp", required = true)
@@ -120,6 +123,30 @@ public class AddDirectionalRecordData {
      */
     public void setSourceIPGroupData(SourceIPGroupData value) {
         this.sourceIPGroupData = value;
+    }
+
+    /**
+     * Gets the value of the forceOverlapTransfer property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isForceOverlapTransfer() {
+        return forceOverlapTransfer;
+    }
+
+    /**
+     * Sets the value of the forceOverlapTransfer property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setForceOverlapTransfer(Boolean value) {
+        this.forceOverlapTransfer = value;
     }
 
     /**

@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="zoneId" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="parentZoneGuid" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="dnssecStatus" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="suspended" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -53,6 +54,8 @@ public class UltraZone {
     protected String parentZoneGuid;
     @XmlAttribute(name = "dnssecStatus")
     protected String dnssecStatus;
+    @XmlAttribute(name = "suspended")
+    protected String suspended;
 
     /**
      * Gets the value of the zoneName property.
@@ -236,6 +239,30 @@ public class UltraZone {
      */
     public void setDnssecStatus(String value) {
         this.dnssecStatus = value;
+    }
+
+    /**
+     * Gets the value of the suspended property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSuspended() {
+        return suspended;
+    }
+
+    /**
+     * Sets the value of the suspended property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSuspended(String value) {
+        this.suspended = value;
     }
 
 }

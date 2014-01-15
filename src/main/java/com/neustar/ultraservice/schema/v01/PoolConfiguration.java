@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="responseMethod" type="{http://schema.ultraservice.neustar.com/v01/}ResponseMethod"/>
  *         &lt;element name="maxActive" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="maxResponse" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="effectiveMaxResponse" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="probesShared" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="rulesShared" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="ttl" type="{http://www.w3.org/2001/XMLSchema}long"/>
@@ -44,6 +45,7 @@ import javax.xml.bind.annotation.XmlType;
     "responseMethod",
     "maxActive",
     "maxResponse",
+    "effectiveMaxResponse",
     "probesShared",
     "rulesShared",
     "ttl",
@@ -60,6 +62,7 @@ public class PoolConfiguration {
     protected ResponseMethod responseMethod;
     protected long maxActive;
     protected long maxResponse;
+    protected long effectiveMaxResponse;
     protected boolean probesShared;
     protected boolean rulesShared;
     protected long ttl;
@@ -176,6 +179,22 @@ public class PoolConfiguration {
      */
     public void setMaxResponse(long value) {
         this.maxResponse = value;
+    }
+
+    /**
+     * Gets the value of the effectiveMaxResponse property.
+     * 
+     */
+    public long getEffectiveMaxResponse() {
+        return effectiveMaxResponse;
+    }
+
+    /**
+     * Sets the value of the effectiveMaxResponse property.
+     * 
+     */
+    public void setEffectiveMaxResponse(long value) {
+        this.effectiveMaxResponse = value;
     }
 
     /**

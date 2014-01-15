@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="ARecord" type="{http://schema.ultraservice.neustar.com/v01/}ARecord"/>
  *         &lt;element name="CNAMERecord" type="{http://schema.ultraservice.neustar.com/v01/}CNAMERecord"/>
+ *         &lt;element name="SubPoolRecord" type="{http://schema.ultraservice.neustar.com/v01/}SUBPOOLRecord"/>
  *       &lt;/sequence>
  *       &lt;attribute name="recordType" use="required" type="{http://schema.ultraservice.neustar.com/v01/}RecordType" />
  *     &lt;/restriction>
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Record", propOrder = {
     "aRecord",
-    "cnameRecord"
+    "cnameRecord",
+    "subPoolRecord"
 })
 public class Record {
 
@@ -40,6 +42,8 @@ public class Record {
     protected ARecord aRecord;
     @XmlElement(name = "CNAMERecord", required = true)
     protected CNAMERecord cnameRecord;
+    @XmlElement(name = "SubPoolRecord", required = true)
+    protected SUBPOOLRecord subPoolRecord;
     @XmlAttribute(name = "recordType", required = true)
     protected RecordType recordType;
 
@@ -89,6 +93,30 @@ public class Record {
      */
     public void setCNAMERecord(CNAMERecord value) {
         this.cnameRecord = value;
+    }
+
+    /**
+     * Gets the value of the subPoolRecord property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SUBPOOLRecord }
+     *     
+     */
+    public SUBPOOLRecord getSubPoolRecord() {
+        return subPoolRecord;
+    }
+
+    /**
+     * Sets the value of the subPoolRecord property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SUBPOOLRecord }
+     *     
+     */
+    public void setSubPoolRecord(SUBPOOLRecord value) {
+        this.subPoolRecord = value;
     }
 
     /**

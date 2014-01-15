@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="RecordState">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="FORCED_ACTIVE"/>
- *     &lt;enumeration value="FORCED_INACTIVE"/>
- *     &lt;enumeration value="NOT_FORCED"/>
+ *     &lt;enumeration value="ACTIVE"/>
+ *     &lt;enumeration value="INACTIVE"/>
+ *     &lt;enumeration value="INACTIVE_DUE_TO_CNAME"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum RecordState {
 
-    FORCED_ACTIVE,
-    FORCED_INACTIVE,
-    NOT_FORCED;
+    ACTIVE,
+    INACTIVE,
+    INACTIVE_DUE_TO_CNAME;
 
     public String value() {
         return name();

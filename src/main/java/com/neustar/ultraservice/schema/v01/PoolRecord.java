@@ -25,7 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="description" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="weight" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="allFail" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="recordState" use="required" type="{http://schema.ultraservice.neustar.com/v01/}RecordState" />
+ *       &lt;attribute name="forcedState" use="required" type="{http://schema.ultraservice.neustar.com/v01/}ForcedState" />
+ *       &lt;attribute name="recordState" type="{http://schema.ultraservice.neustar.com/v01/}RecordState" />
  *       &lt;attribute name="probesEnabled" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="recordStatus" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -53,7 +54,9 @@ public class PoolRecord {
     protected Integer weight;
     @XmlAttribute(name = "allFail")
     protected Boolean allFail;
-    @XmlAttribute(name = "recordState", required = true)
+    @XmlAttribute(name = "forcedState", required = true)
+    protected ForcedState forcedState;
+    @XmlAttribute(name = "recordState")
     protected RecordState recordState;
     @XmlAttribute(name = "probesEnabled", required = true)
     protected boolean probesEnabled;
@@ -202,6 +205,30 @@ public class PoolRecord {
      */
     public void setAllFail(Boolean value) {
         this.allFail = value;
+    }
+
+    /**
+     * Gets the value of the forcedState property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ForcedState }
+     *     
+     */
+    public ForcedState getForcedState() {
+        return forcedState;
+    }
+
+    /**
+     * Sets the value of the forcedState property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ForcedState }
+     *     
+     */
+    public void setForcedState(ForcedState value) {
+        this.forcedState = value;
     }
 
     /**
